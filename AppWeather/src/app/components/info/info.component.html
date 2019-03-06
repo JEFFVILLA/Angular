@@ -1,0 +1,66 @@
+
+
+
+<div class="container p-4">
+  
+  <div class="row"> 
+    <div class="col-md-12 text-center">
+        <h2 style="color: aliceblue">Weather information</h2>
+    </div>
+    
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card text-center" style="max-width: 25rem;">
+        <div class="card-body">
+          <form (submit)="ingresarLocalizacion(cuidad)">
+              <div class="form-group">
+                
+                  <input type="text" class="form-control typeahead" placeholder="City" #cuidad>
+              </div>
+              <!-- <div class="form-group">
+                  <input type="text" class="form-control" placeholder="City Code" #codigo>
+              </div> -->
+           
+            <button class="btn btn-primary btn-block mt-2"> Get information</button>
+          </form>
+        </div>
+      </div>
+      <div class="card bg-light mt-3" style="max-width: 25rem;">
+        <div class="card-header text-center"><strong>How to Use:</strong></div>
+        <div class="card-body">
+          <h5 class="card-title text-center">Weather Information</h5>
+          <p class="card-text text-justify">To perform a search of the temperature of your city, just enter the desired city and click on get information.Example:</p>
+          <ul>
+            <li>Lima</li> 
+            <li>Santiago</li>
+            <li>Manta,ec</li>
+          </ul>
+          <p class="card-text text-justify">On the last example to specify the search you can enter after the name the city a "," to specify the country code to search.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6 text-center">
+      <div *ngIf="clima" class="card">
+        <div  class="card-body">
+          <img width="80" [src]="icono">
+          <h1>{{clima.name}}</h1>
+          <h3><small>County Code: {{clima.sys.country}}</small></h3> 
+          <h3><strong>Temperature:</strong></h3>
+          <h1>{{clima.main.temp}} ºC</h1>
+          <hr>
+          <h3><strong>Humidity:</strong></h3>
+          <h3>{{clima.main.humidity }}%</h3>
+          <hr>
+          <h3><strong>Description:</strong></h3>
+          <h3>{{clima.weather[0].description | titlecase}}</h3>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+   
+
+</div>
